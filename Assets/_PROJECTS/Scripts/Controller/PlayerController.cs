@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public SpriteRenderer nextBall;     //the object to indicate our next ball
     public SpriteRenderer aimSprite;    //Image of aim
+    public bool ableToControl;          //determine whether the player able to control
     //============================ PRIVATE VAR ============================
     private string[] _allBallID = new string[]   
     {
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void ControlerInitializer()
     {
+        //set able to control to true
+        ableToControl = true;
         //if camera is empty then get main camera
         if(_cam == null) _cam = Camera.main;
         //set default value for current fruit ID
@@ -44,6 +47,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(ableToControl == false) return;
         FruitController();
     }
 
